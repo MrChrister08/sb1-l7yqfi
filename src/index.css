@@ -1,0 +1,114 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Base styles */
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-white text-gray-900 transition-colors duration-200;
+}
+
+body.dark {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold tracking-tight;
+}
+
+/* Theme transitions */
+*, *::before, *::after {
+  @apply transition-colors duration-200;
+}
+
+/* Matrix Effect */
+.matrix-rain {
+  position: absolute;
+  inset: 0;
+  background: black;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -20%;
+  width: 1px;
+  height: 120%;
+  animation: matrix-rain 2s infinite linear;
+}
+
+.matrix-character {
+  float: left;
+  color: #0f0;
+  font-size: 1.2em;
+  opacity: 0;
+  animation: matrix-glow 2s infinite linear;
+}
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes matrix-glow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Party Effect */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 3s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Component styles */
+.prose-custom {
+  @apply prose dark:prose-invert
+         prose-headings:text-gray-900 dark:prose-headings:text-white
+         prose-p:text-gray-700 dark:prose-p:text-gray-300
+         prose-strong:text-gray-900 dark:prose-strong:text-white
+         prose-code:text-gray-900 dark:prose-code:text-white
+         max-w-none;
+}
+
+.nav-link {
+  @apply px-3 py-2 rounded-md text-sm font-medium
+         hover:text-indigo-600 dark:hover:text-indigo-400
+         transition-colors duration-200;
+}
+
+.nav-link-active {
+  @apply text-indigo-600 dark:text-indigo-400;
+}
+
+/* Scrollbar styles */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full
+           hover:bg-gray-400 dark:hover:bg-gray-600;
+  }
+}
